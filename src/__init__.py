@@ -7,4 +7,5 @@ def init_app(config):
     app.config.from_object(config)
     #blueprints
     app.register_blueprint(origin.main,url_prefix="/")
+    
     return app
