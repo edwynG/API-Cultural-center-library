@@ -22,7 +22,7 @@ class SheetObject(Template):
             for i,value in enumerate(row): # recorre columnas de la tabla
                 book[f"{self.fields[i].lower()}"]=value # crea datos de un libro
             books.append(book.copy()) # agrega un libro a la libreria
-        return {self.sheet :books}
+        return books
     
     def __str__(self):
         return super().__str__()        
