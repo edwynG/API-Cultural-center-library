@@ -7,13 +7,13 @@ main = Blueprint("route_origin",__name__)
 
 @main.route("/")
 def init():
-    return jsonify(getSheets())
+    return jsonify({"result":getSheets()})
 
-@main.route("/<string:sheet>")
+@main.route("/<sheet>")
 def Specific(sheet):
     json=getDataBase(sheet=sheet)
     if json == None : abort(404)
-    return jsonify(json)
+    return jsonify({"info":{"Category":sheet},"result":json})
 
 @main.errorhandler(404)
 def handlerError404(error):

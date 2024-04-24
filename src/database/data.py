@@ -5,7 +5,7 @@ from src.models.prototypes import SheetObject,Sheet
 def DataBase(df, sheet):
     if not df.isnull().all().all():
         df = df.dropna(axis=0,how='all')
-        fields= ["register","title","author","year_edition","ISBN_ISSN","editorial","page","colection","city","specimens","support","type_support","materia","location","observations"] #df.iloc[0,:].values
+        fields= ["register","title","author","year_edition","ISBN_ISSN","editorial","page","colection","city","ejem","support","type_support","materia","location","observations"] #df.iloc[0,:].values
         df = df.iloc[1:,]
         data = df.values
         return SheetObject(sheet,fields,data).constructor()

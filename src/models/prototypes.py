@@ -1,3 +1,5 @@
+import pandas as pd
+
 class Template:
     def __init__(self,sheet):
         self.sheet=sheet
@@ -20,9 +22,13 @@ class SheetObject(Template):
         book = dict() # libro 
         for row in self.data: # recorre filas de la tabla
             for i,value in enumerate(row): # recorre columnas de la tabla
-                book[f"{self.fields[i].lower()}"]=value # crea datos de un libro
+                if not pd.isna(value):
+                    book[f"{self.fields[i].lower()}"]=value # crea datos de un libro
+                else:
+                    book[f"{self.fields[i].lower()}"]=None
             books.append(book.copy()) # agrega un libro a la libreria
         return books
+    
     
     def __str__(self):
         return super().__str__()        
@@ -34,7 +40,7 @@ class Sheet(Template):
         self.index = num
     
     def constructor(self):
-        return {"sheet":f"/{self.sheet}","index":self.index}
+        return {"sheet":f"{self.sheet}","index":self.index}
     
     def __str__(self):
         return super().__str__()        
