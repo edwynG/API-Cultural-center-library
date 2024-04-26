@@ -16,11 +16,11 @@ def DataBase(df, sheet):
 def getDataBase(sheet):
     path = config('PAHT_RELATIVE_EXCEL')
     file = pd.ExcelFile(path,engine='openpyxl')
+    
     try:
         df_sheet = file.parse(sheet_name=sheet,header=None)
         object_sheet = DataBase(df_sheet,sheet)
-        if object_sheet != None:  return object_sheet
-        return None
+        return object_sheet
     except Exception:
         return None
 

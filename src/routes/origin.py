@@ -11,7 +11,7 @@ def init():
 
 @main.route("/<sheet>")
 def Specific(sheet):
-    json=getDataBase(sheet=sheet)
+    json=getDataBase(sheet=sheet.upper())
     if json == None : abort(404)
     return jsonify({"info":{"Category":sheet},"result":json})
 
