@@ -14,7 +14,7 @@ def DataBase(df, sheet):
 
 
 def getDataBase(sheet):
-    path = config('PAHT_RELATIVE_EXCEL')
+    path = config('PATH_RELATIVE_EXCEL')
     file = pd.ExcelFile(path,engine='openpyxl')
     
     try:
@@ -25,7 +25,7 @@ def getDataBase(sheet):
         return None
 
 def getSheets():
-    path = config('PAHT_RELATIVE_EXCEL')
+    path = config('PATH_RELATIVE_EXCEL')
     file = pd.ExcelFile(path, engine='openpyxl')
     sheets_names= file.sheet_names
     json = [Sheet(object,i).constructor() for i,object in enumerate(sheets_names)]
